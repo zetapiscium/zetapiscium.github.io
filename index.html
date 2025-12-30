@@ -1,11 +1,311 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Harshal | Web Developer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Zeta | Web Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & BASICS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0f172a;       /* Deep Nordic Night */
+            --bg-accent: #1e293b;     /* Dark Slate */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;     /* Snow White */
+            --text-muted: #94a3b8;    /* Glacial Grey */
+            --accent-cyan: #22d3ee;   /* Zeta Star Blue */
+            --accent-purple: #818cf8; /* Nebula */
+            --blur-amt: 16px;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND ATMOSPHERE (AURORA & STARS) --- */
+        .ambient-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: drift 20s infinite alternate;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-purple);
+            top: -10%;
+            left: -10%;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-cyan);
+            bottom: 10%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .stars {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 30px); }
+        }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* --- GLASS COMPONENTS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amt));
+            -webkit-backdrop-filter: blur(var(--blur-amt));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.7); /* Semi-transparent nav */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+        
+        .logo span { color: var(--accent-cyan); }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-cyan); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .btn-glow {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+        }
+
+        .btn-glow:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-deep);
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+        }
+
+        /* --- SERVICES GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-purple);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for demo */
+        }
+    </style>
 </head>
 <body>
-  <h1>Hi, I build websites.</h1>
-  <p>Portfolio coming soon.</p>
+
+    <div class="ambient-light">
+        <div class="stars"></div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">NORDIC<span>ZETA</span></div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#work">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="glass-card" style="display: inline-block; padding: 60px;">
+                <h1>Architecting the<br>Digital Cosmos</h1>
+                <p>I build high-performance, minimalist websites for brands that demand precision. Experience the intersection of Nordic design and modern code.</p>
+                <a href="#contact" class="btn-glow">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Capabilities</h2>
+            <p style="color: var(--text-muted);">Full-stack solutions tailored for scale and speed.</p>
+            
+            <div class="services-grid">
+                <div class="glass-card">
+                    <div class="service-icon">✦</div>
+                    <h3>Frontend Development</h3>
+                    <p style="color: var(--text-muted);">Responsive, pixel-perfect interfaces using React and modern CSS. Smooth animations and blur effects comes standard.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Backend Architecture</h3>
+                    <p style="color: var(--text-muted);">Robust server-side logic using Python and Java. Secure APIs, database management, and cloud deployment.</p>
+                </div>
+
+                <div class="glass-card">
+                    <div class="service-icon">❖</div>
+                    <h3>UI/UX Design</h3>
+                    <p style="color: var(--text-muted);">Nordic-inspired minimalism. Clean lines, intuitive navigation, and accessibility focused design systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="glass-card">
+                <h2>Ready to Launch?</h2>
+                <p style="margin-bottom: 30px; color: var(--text-muted);">Let's discuss your next mission.</p>
+                <a href="mailto:hello@nordiczeta.com" class="btn-glow">Email Me</a>
+            </div>
+            <br><br>
+            <p>&copy; 2025 Nordic Zeta Piscium Theme. All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
