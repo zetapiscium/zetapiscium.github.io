@@ -1,377 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordic Zeta | Web Solutions</title>
+    <meta name="description"
+        content="Zetapicisum - Professional website design and development starting at just ₹1,000. Fast, affordable, and beautiful websites for your business.">
+    <meta name="keywords"
+        content="cheap website design, affordable web development, budget website, ₹1000 website, India web design, freelance web developer">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Zetapicisum | Affordable Web Design Starting ₹1,000">
+    <meta property="og:description"
+        content="Professional websites at unbeatable prices. Get your business online today.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zetapicisum | Affordable Web Design">
+    <meta name="twitter:description" content="Professional websites starting at ₹1,000">
+
+    <title>Zetapicisum | Affordable Web Design Starting ₹1,000</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- RESET & BASICS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
 
-        :root {
-            --bg-deep: #0f172a;       /* Deep Nordic Night */
-            --bg-accent: #1e293b;     /* Dark Slate */
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;     /* Snow White */
-            --text-muted: #94a3b8;    /* Glacial Grey */
-            --accent-cyan: #22d3ee;   /* Zeta Star Blue */
-            --accent-purple: #818cf8; /* Nebula */
-            --blur-amt: 16px;
-        }
+    <link rel="stylesheet" href="styles.css">
 
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- BACKGROUND ATMOSPHERE (AURORA & STARS) --- */
-        .ambient-light {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: drift 20s infinite alternate;
-        }
-
-        .blob-1 {
-            width: 500px;
-            height: 500px;
-            background: var(--accent-purple);
-            top: -10%;
-            left: -10%;
-        }
-
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent-cyan);
-            bottom: 10%;
-            right: -10%;
-            animation-delay: -5s;
-        }
-
-        .stars {
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.2;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-
-        @keyframes drift {
-            from { transform: translate(0, 0); }
-            to { transform: translate(50px, 30px); }
-        }
-
-        /* --- LAYOUT UTILS --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        /* --- GLASS COMPONENTS --- */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--blur-amt));
-            -webkit-backdrop-filter: blur(var(--blur-amt));
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-        }
-
-        /* --- HEADER --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 0;
-            z-index: 100;
-            background: rgba(15, 23, 42, 0.7); /* Semi-transparent nav */
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            color: var(--text-main);
-        }
-        
-        .logo span { color: var(--accent-cyan); }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--accent-cyan); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-        }
-
-        .btn-glow {
-            display: inline-block;
-            padding: 15px 40px;
-            background: rgba(34, 211, 238, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid var(--accent-cyan);
-            border-radius: 50px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
-        }
-
-        .btn-glow:hover {
-            background: var(--accent-cyan);
-            color: var(--bg-deep);
-            box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
-        }
-
-        /* --- SERVICES GRID --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--accent-purple);
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- MOBILE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Simplified for demo */
-        }
-    </style>
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Zetapicisum",
+        "description": "Affordable web design and development services starting at ₹1,000",
+        "priceRange": "₹1,000 - ₹10,000",
+        "areaServed": "India",
+        "serviceType": ["Web Design", "Web Development", "Landing Page Design"],
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Landing Page",
+                "price": "1999",
+                "priceCurrency": "INR",
+                "description": "Single page website perfect for personal branding and promotions"
+            },
+            {
+                "@type": "Offer",
+                "name": "Static Website",
+                "price": "3999",
+                "priceCurrency": "INR",
+                "description": "Multi-page static website for businesses"
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does a website cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Landing pages start at ₹1,999 and static websites with multiple pages start at ₹3,999. Hosting and domain charges are additional."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to build a website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A landing page takes 2-3 days. Static websites with multiple pages take 5-7 days."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide hosting and domain?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Hosting starts at ₹500/year and domains at ₹800/year. We handle complete setup for you."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will my website work on mobile phones?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! All our websites are fully responsive and optimized for mobile, tablet, and desktop devices."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
+
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">❄</span>
+                <span class="logo-text">Zetapicisum</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="btn btn-nav">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-    <div class="ambient-light">
-        <div class="stars"></div>
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">NORDIC<span>ZETA</span></div>
-                <div class="nav-links">
-                    <a href="#services">Services</a>
-                    <a href="#work">Portfolio</a>
-                    <a href="#contact">Contact</a>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">✨ Websites starting at just ₹1,999</div>
+            <h1 class="hero-title">Beautiful Websites<br><span class="gradient-text">At Unbeatable Prices</span></h1>
+            <p class="hero-subtitle">Get your business online with a stunning, fast-loading website. No hidden costs, no
+                surprises — just professional web design that fits your budget.</p>
+            <div class="hero-cta">
+                <a href="#pricing" class="btn btn-primary">View Pricing</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Projects Delivered</span>
                 </div>
-            </nav>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">48hr</span>
+                    <span class="stat-label">Fast Turnaround</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
+    <!-- Services Section -->
+    <section id="services" class="services">
         <div class="container">
-            <div class="glass-card" style="display: inline-block; padding: 60px;">
-                <h1>Architecting the<br>Digital Cosmos</h1>
-                <p>I build high-performance, minimalist websites for brands that demand precision. Experience the intersection of Nordic design and modern code.</p>
-                <a href="#contact" class="btn-glow">Start a Project</a>
+            <div class="section-header">
+                <span class="section-badge">What We Offer</span>
+                <h2 class="section-title">Services Built for Your Success</h2>
+                <p class="section-subtitle">From simple landing pages to full business websites — we've got you covered
+                </p>
             </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2>Capabilities</h2>
-            <p style="color: var(--text-muted);">Full-stack solutions tailored for scale and speed.</p>
-            
             <div class="services-grid">
-                <div class="glass-card">
-                    <div class="service-icon">✦</div>
-                    <h3>Frontend Development</h3>
-                    <p style="color: var(--text-muted);">Responsive, pixel-perfect interfaces using React and modern CSS. Smooth animations and blur effects comes standard.</p>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Landing Pages</h3>
+                    <p>High-converting single-page sites perfect for promoting your product, service, or personal brand.
+                    </p>
                 </div>
-
-                <div class="glass-card">
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Business Websites</h3>
+                    <p>Multi-page professional websites with about, services, contact pages and more for your growing
+                        business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3>Portfolio Sites</h3>
+                    <p>Showcase your work beautifully with a custom portfolio site that makes you stand out.</p>
+                </div>
+                <div class="service-card">
                     <div class="service-icon">⚡</div>
-                    <h3>Backend Architecture</h3>
-                    <p style="color: var(--text-muted);">Robust server-side logic using Python and Java. Secure APIs, database management, and cloud deployment.</p>
+                    <h3>Speed Optimization</h3>
+                    <p>Lightning-fast websites that load instantly, keeping visitors engaged and improving SEO.</p>
                 </div>
-
-                <div class="glass-card">
-                    <div class="service-icon">❖</div>
-                    <h3>UI/UX Design</h3>
-                    <p style="color: var(--text-muted);">Nordic-inspired minimalism. Clean lines, intuitive navigation, and accessibility focused design systems.</p>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile-First Design</h3>
+                    <p>Every site is fully responsive, looking stunning on phones, tablets, and desktops.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO Friendly</h3>
+                    <p>Built-in search engine optimization so your site gets found by the right people.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing">
-            <h2 style="text-align: center; margin-bottom: 40px;">Professional Pricing</h2>
-            <div class="pricing-grid">
-                
-                <div class="glass-panel" style="border-top: 4px solid var(--text-muted);">
-                    <h3>Essential</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Static Site (Brochure)</p>
-                    <div class="price-tag">₹4,999 <span>/ 1st year</span></div>
-                    <ul class="features-list">
-                        <li>3 Page Website</li>
-                        <li>Mobile & Tablet Responsive</li>
-                        <li><span style="color:var(--accent-cyan)">2 Professional Emails</span> (info@...)</li>
-                        <li>Fast LiteSpeed Server</li>
-                        <li><span style="color:var(--accent-green)">Free .in Domain (1 Year)</span></li>
-                    </ul>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px;">*Renewal: ₹2,000/year</p>
-                    <a href="mailto:contact@zetastudio.com?subject=Essential Plan" class="btn" style="background: rgba(255,255,255,0.1); width:100%; text-align: center;">Select Plan</a>
-                </div>
-
-                <div class="glass-panel" style="border-top: 4px solid var(--accent-cyan); transform: scale(1.05);">
-                    <div style="background: var(--accent-cyan); color: #000; font-size: 0.7rem; font-weight: bold; display: inline-block; padding: 4px 10px; border-radius: 20px; margin-bottom: 10px;">BEST VALUE</div>
-                    <h3>Business Pro</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Dynamic Features</p>
-                    <div class="price-tag" style="color: var(--accent-cyan);">₹8,999 <span>/ 1st year</span></div>
-                    <ul class="features-list">
-                        <li>Up to 10 Pages</li>
-                        <li>Working Contact Forms (PHP)</li>
-                        <li>Google Maps & WhatsApp Integration</li>
-                        <li><span style="color:var(--accent-cyan)">5 Professional Emails</span></li>
-                        <li>SEO Optimization (Google Ranking)</li>
-                    </ul>
-                    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:10px;">*Renewal: ₹2,500/year</p>
-                    <a href="mailto:contact@zetastudio.com?subject=Business Pro Plan" class="btn btn-primary" style="width:100%; text-align: center;">Select Plan</a>
-                </div>
-
-                <div class="glass-panel" style="border-top: 4px solid var(--accent-green);">
-                    <h3>Custom / Store</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Sell Products Online</p>
-                    <div class="price-tag">₹18,999+</div>
-                    <ul class="features-list">
-                        <li>Admin Dashboard (CMS)</li>
-                        <li>Product Management</li>
-                        <li>Payment Gateway (Razorpay/UPI)</li>
-                        <li>Database Integration (MySQL)</li>
-                        <li>Unlimited Emails</li>
-                    </ul>
-                    <a href="mailto:contact@zetastudio.com?subject=Custom Project" class="btn" style="background: rgba(255,255,255,0.1); width:100%; text-align: center;">Contact Us</a>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="faq">
-            <h2>Common Questions</h2>
-            <div class="glass-panel" style="margin-top: 20px;">
-                <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    <strong style="color: var(--text-main);">Q: What is the renewal fee?</strong><br>
-                    A: After the first year, there is a small annual fee (approx. ₹2,000 - ₹2,500). This covers your <strong>Domain Name renewal</strong>, Server Space, and Email Hosting. This ensures your site never goes offline.
-                </p>
-                <p style="color: var(--text-muted);">
-                    <strong style="color: var(--text-main);">Q: Do I get professional email?</strong><br>
-                    A: Yes! Unlike free website builders, we provide official business emails (e.g., <code>sales@yourcompany.com</code>) which makes your business look trustworthy.
-                </p>
-            </div>
-        </section>
-    
-    <footer id="contact">
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
         <div class="container">
-            <div class="glass-card">
-                <h2>Ready to Launch?</h2>
-                <p style="margin-bottom: 30px; color: var(--text-muted);">Let's discuss your next mission.</p>
-                <a href="mailto:hello@nordiczeta.com" class="btn-glow">Email Me</a>
+            <div class="section-header">
+                <span class="section-badge">Simple Pricing</span>
+                <h2 class="section-title">Choose Your Perfect Plan</h2>
+                <p class="section-subtitle">Transparent pricing with no hidden fees. Hosting & domain charged
+                    separately.</p>
             </div>
-            <br><br>
-            <p>&copy; 2025 Nordic Zeta Piscium Theme. All Rights Reserved.</p>
+            <div class="pricing-grid pricing-grid-2">
+                <!-- Landing Page -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Landing Page</h3>
+                        <p class="pricing-desc">Perfect for promotions & personal branding</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="currency">₹</span>
+                        <span class="price">1,999</span>
+                        <span class="period">one-time</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Single Page Website</li>
+                        <li><span class="check">✓</span> Mobile Responsive</li>
+                        <li><span class="check">✓</span> Contact Form</li>
+                        <li><span class="check">✓</span> Basic SEO Setup</li>
+                        <li><span class="check">✓</span> 2-3 Days Delivery</li>
+                        <li><span class="check">✓</span> 1 Revision Round</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Static Website -->
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Best Value</div>
+                    <div class="pricing-header">
+                        <h3>Static Website</h3>
+                        <p class="pricing-desc">Multi-page site for your business</p>
+                    </div>
+                    <div class="pricing-amount">
+                        <span class="currency">₹</span>
+                        <span class="price">3,999</span>
+                        <span class="period">one-time</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Up to 5 Pages</li>
+                        <li><span class="check">✓</span> Mobile Responsive</li>
+                        <li><span class="check">✓</span> Contact Form + Map</li>
+                        <li><span class="check">✓</span> Full SEO Optimization</li>
+                        <li><span class="check">✓</span> 5-7 Days Delivery</li>
+                        <li><span class="check">✓</span> 2 Revision Rounds</li>
+                        <li><span class="check">✓</span> Social Media Links</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+            <p class="pricing-note">* Hosting: ₹500/year | Domain: ₹800/year (optional — we can set up for you)</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Common Questions</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">How much does a website cost?</h3>
+                    <p class="faq-answer">Landing pages start at just ₹1,999. Static websites with multiple pages
+                        start at ₹3,999. Hosting and domain charges are additional (typically ₹1,300/year combined).</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How long does it take to build a website?</h3>
+                    <p class="faq-answer">A landing page takes 2-3 days. Static websites take 5-7 days depending on the
+                        number of pages.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you provide hosting and domain?</h3>
+                    <p class="faq-answer">Yes! We can handle everything. Hosting starts at ₹500/year and domains at
+                        ₹800/year. We'll set up and manage it all for you.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Will my website work on mobile phones?</h3>
+                    <p class="faq-answer">Absolutely! All our websites are fully responsive and optimized for mobile,
+                        tablet, and desktop devices. Over 70% of visitors browse on mobile — we've got you covered.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I update my website myself?</h3>
+                    <p class="faq-answer">Yes! We'll provide you with clear instructions. For larger updates, we offer
+                        maintenance packages or one-time edit services at affordable rates.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I need changes after delivery?</h3>
+                    <p class="faq-answer">Landing pages include 1 revision round, and static websites include 2 rounds.
+                        Minor tweaks after that are usually free!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <span class="section-badge">Let's Talk</span>
+                    <h2 class="section-title">Ready to Get Started?</h2>
+                    <p>Drop us a message or give us a call. We typically respond within a few hours.</p>
+
+                    <div class="contact-methods">
+                        <a href="mailto:hello@zetapicisum.com" class="contact-method">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <strong>Email Us</strong>
+                                <span>hello@zetapicisum.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+919876543210" class="contact-method">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Call Us</strong>
+                                <span>+91 98765 43210</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project">Project Type</label>
+                        <select id="project" name="project">
+                            <option value="landing" selected>Landing Page (₹1,999)</option>
+                            <option value="static">Static Website (₹3,999)</option>
+                            <option value="custom">Custom Project</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" name="message" rows="4"
+                            placeholder="I need a website for my..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">❄</span>
+                    <span class="logo-text">Zetapicisum</span>
+                    <p>Beautiful websites at prices that make sense.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zetapicisum. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .pricing-card, .faq-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
+
 </html>
