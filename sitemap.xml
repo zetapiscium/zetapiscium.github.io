@@ -1,0 +1,5 @@
+/* robots.txt for Zetapicisum */
+User-agent: *
+Allow: /
+
+Sitemap: https://zetapiscium.github.io/sitemap.xml
